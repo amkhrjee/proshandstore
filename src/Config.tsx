@@ -10,6 +10,7 @@ import {
   Spacer,
   cn,
 } from "@nextui-org/react";
+import { FC } from "react";
 
 // @ts-expect-error shutup typescript
 export const CustomRadio = (props) => {
@@ -31,9 +32,14 @@ export const CustomRadio = (props) => {
   );
 };
 
-export default function Config() {
+interface ConfigProps {
+  handler: (value: string) => void;
+  color: string;
+}
+
+const Config: FC<ConfigProps> = ({ handler, color }) => {
   return (
-    <Card className="p-4 mr-4">
+    <Card className="p-4 mr-4 h-4/5">
       <CardHeader className="text-2xl font-bold">
         Customize your Prosthetic Hand
       </CardHeader>
@@ -54,12 +60,14 @@ export default function Config() {
           //   className="text-black"
           label="Color of Material"
           orientation="horizontal"
+          onValueChange={handler}
+          defaultValue={color}
         >
           <CustomRadio value="pink">Pink</CustomRadio>
           <CustomRadio value="teal">Teal</CustomRadio>
           <CustomRadio value="yellow">Yellow</CustomRadio>
           <CustomRadio value="white">White</CustomRadio>
-          <CustomRadio value="black">Black</CustomRadio>
+          <CustomRadio value="gray">Gray</CustomRadio>
         </RadioGroup>
       </CardBody>
       <CardFooter className="justify-center">
@@ -67,4 +75,6 @@ export default function Config() {
       </CardFooter>
     </Card>
   );
-}
+};
+
+export default Config;

@@ -24,14 +24,13 @@ type GLTFResult = GLTF & {
 //   ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>
 // >;
 
-export function Result(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF("/result-transformed.glb") as GLTFResult;
+export default function Result(props: JSX.IntrinsicElements["group"]) {
+  const { nodes } = useGLTF("/result-transformed.glb") as GLTFResult;
   return (
     <group {...props} dispose={null}>
-      <mesh
-        geometry={nodes.node.geometry}
-        material={materials.DefaultMaterial}
-      />
+      <mesh geometry={nodes.node.geometry}>
+        <meshPhongMaterial color={"pink"} />
+      </mesh>
     </group>
   );
 }
