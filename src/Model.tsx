@@ -82,8 +82,8 @@ const Result: FC<ModelProps> = ({ color, size }) => {
 const Model: FC<ModelProps> = ({ color, size }) => {
   return (
     <div id="canvas-container">
-      {/* <Canvas camera={{ position: [0, 0, -100] }}> */}
-      <Canvas>
+      <Canvas camera={{ position: [0, 200, 200] }}>
+        {/* <Canvas> */}
         {/* <ambientLight intensity={5} /> */}
         <directionalLight color={"white"} intensity={2.5} />
         <directionalLight
@@ -98,7 +98,7 @@ const Model: FC<ModelProps> = ({ color, size }) => {
         />
 
         <Result color={color} size={size} />
-        <OrbitControls />
+        <OrbitControls enableDamping />
       </Canvas>
     </div>
   );
