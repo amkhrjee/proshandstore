@@ -25,21 +25,10 @@ export default function Topbar() {
         <p className="font-bold text-inherit">🛒 Prosthetic Hand Store</p>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="end">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            About
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Tezpur University
-          </Link>
-        </NavbarItem>
+        <NavbarItem>Features</NavbarItem>
+        <NavbarItem>About</NavbarItem>
+        <NavbarItem>GitHub</NavbarItem>
+        <NavbarItem>Tezpur University</NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         {menuItems.map((item, index) => (
