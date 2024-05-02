@@ -32,8 +32,6 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
-console.log(firebaseConfig);
-
 // console.log(typeof import.meta.env.VITE_API_KEY);
 // let hell = "hell";
 // console.log(hell);
