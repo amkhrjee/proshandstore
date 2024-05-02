@@ -99,7 +99,7 @@ export default function Topbar() {
                   role="Project Guide"
                 />
                 <Spacer y={2} />
-                <div className="grid grid-cols-3">
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-3 ">
                   <Member
                     imgSrc="https://i.ibb.co/KN48pXh/1713849714221.jpg"
                     color="secondary"
@@ -110,26 +110,28 @@ export default function Topbar() {
                   <Member
                     imgSrc="https://i.ibb.co/0YDSQw5/potrait.jpg"
                     color="secondary"
-                    name="Aniruddha Mukherjee"
+                    name="Aniruddha M"
                     profileSrc="https://www.linkedin.com/in/amkhrjee/"
                     role="Software & Web"
                   />
-                  <Member
-                    imgSrc="https://media.licdn.com/dms/image/C4E03AQE6qYHbr36jYw/profile-displayphoto-shrink_400_400/0/1657976189663?e=1720051200&v=beta&t=rlrPa4crHOzxZHeYW0qCCT8M2d77chYIuOaqpjZo_c0"
-                    color="secondary"
-                    name="Ritish Kumar Das"
-                    profileSrc="https://www.linkedin.com/in/ritish-kumar-das-17a629245/"
-                    role="Electronics & ML"
-                  />
+                  <div className="col-span-2 md:col-span-1">
+                    <Member
+                      imgSrc="https://media.licdn.com/dms/image/C4E03AQE6qYHbr36jYw/profile-displayphoto-shrink_400_400/0/1657976189663?e=1720051200&v=beta&t=rlrPa4crHOzxZHeYW0qCCT8M2d77chYIuOaqpjZo_c0"
+                      color="secondary"
+                      name="Ritish Kumar Das"
+                      profileSrc="https://www.linkedin.com/in/ritish-kumar-das-17a629245/"
+                      role="Electronics & ML"
+                    />
+                  </div>
                 </div>
-                <Spacer y={2} />
+                <Spacer y={1} />
                 <p>
-                  Special Thanks to our friends at Mechanical Department,{" "}
-                  <Link href="#">Aman Uddin</Link> &{" "}
+                  Special Thanks to our friends at Mechanical Engineering
+                  Department, <Link href="#">Aman Uddin</Link> &{" "}
                   <Link href="https://www.instagram.com/sivam.karmakar/">
                     Sivam Karmakar
                   </Link>
-                  , for help with the SolidWorks
+                  , for help with SolidWorks
                 </p>
               </ModalBody>
               <ModalFooter>
