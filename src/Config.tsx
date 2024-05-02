@@ -4,8 +4,8 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
-  Chip,
   Input,
+  Chip,
   Radio,
   RadioGroup,
   Slider,
@@ -20,9 +20,8 @@ import {
 } from "@nextui-org/react";
 import { FC, useState } from "react";
 import ConfettiExplosion from "react-confetti-explosion";
-import { v4 as uuidv4 } from "uuid";
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
@@ -33,10 +32,14 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APP_ID,
 };
 
+console.log(firebaseConfig);
+
+// console.log(typeof import.meta.env.VITE_API_KEY);
+// let hell = "hell";
+// console.log(hell);
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-console.log(db);
 
 // @ts-expect-error shutup typescript
 export const CustomRadio = (props) => {
@@ -62,12 +65,21 @@ interface ConfigProps {
   handler: (value: string) => void;
   sizeHandler: (value: number | number[]) => void;
   color: string;
+  size: number;
 }
 
 // Stages: Start, Mid, Final
 
-const Config: FC<ConfigProps> = ({ handler, sizeHandler, color }) => {
+const Config: FC<ConfigProps> = ({ handler, sizeHandler, color, size }) => {
   const [stage, setStage] = useState("start");
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [address, setAddress] = useState("");
+  const [orderId, setOrderId] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   switch (stage) {
     case "start":
@@ -125,17 +137,31 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color }) => {
           </CardHeader>
           <CardBody>
             <div className="flex">
-              <Input type="text" label="First Name" className="max-w-xs" />
+              <Input
+                type="text"
+                label="First Name"
+                className="max-w-xs"
+                onChange={(e) => setFirstName(e.target.value)}
+                defaultValue={firstName}
+              />
               <Spacer x={2} />
-              <Input type="text" label="Last Name" className="max-w-xs" />
+              <Input
+                type="text"
+                label="Last Name"
+                className="max-w-xs"
+                onChange={(e) => setLastName(e.target.value)}
+                defaultValue={lastName}
+              />
             </div>
             <Spacer y={2} />
             <div className="flex">
               <Input
                 type="email"
                 label="Email"
+                defaultValue={email}
                 description="We'll never share your email with anyone else."
                 className="max-w-xs"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <Spacer x={2} />
               <Input
@@ -144,6 +170,8 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color }) => {
                 startContent="+91"
                 description="We'll contact you on this number."
                 className="max-w-xs"
+                onChange={(e) => setMobile(e.target.value)}
+                defaultValue={mobile}
               />
             </div>
             <Spacer y={2} />
@@ -152,6 +180,8 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color }) => {
               label="Address"
               description="Your order will be delivered here."
               className="w-5/6"
+              onChange={(e) => setAddress(e.target.value)}
+              defaultValue={address}
             />
             <Spacer y={4} />
             <div className="text-xl font-semibold">🧾 Order Summary</div>
@@ -166,15 +196,39 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color }) => {
               <TableBody>
                 <TableRow key="1">
                   <TableCell>Prosthetic Hand</TableCell>
-                  <TableCell>35</TableCell>
-                  <TableCell>Blue</TableCell>
+                  <TableCell>{size}</TableCell>
+                  <TableCell>{color}</TableCell>
                 </TableRow>
               </TableBody>
             </Table>
           </CardBody>
           <CardFooter className="justify-center">
-            <Button onClick={() => setStage("final")} color="primary">
-              Confirm Order
+            <Button
+              isLoading={isLoading}
+              onPress={async () => {
+                setIsLoading(true);
+                try {
+                  const document = await addDoc(collection(db, "Orders"), {
+                    FirstName: firstName,
+                    LastName: lastName,
+                    Email: email,
+                    Mobile: mobile,
+                    Address: address,
+                    HandColor: color,
+                    HandSize: size,
+                    isDone: false,
+                  });
+                  console.log("Data Added! ID:", document.id);
+                  setOrderId(document.id);
+                  setIsLoading(false);
+                  setStage("final");
+                } catch (e) {
+                  console.error(e);
+                }
+              }}
+              color="primary"
+            >
+              {isLoading ? <>Processing Order</> : <>Confirm Order</>}
             </Button>
           </CardFooter>
         </Card>
@@ -187,11 +241,11 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color }) => {
             Thank you for ordering with us!
             <Spacer y={2} />
             <h1 className="text-sm">
-              Your Order ID is <Chip>{uuidv4()}</Chip>
+              Your Order ID is <Chip>{orderId}</Chip>
             </h1>
           </CardBody>
           <CardFooter>
-            <Button onClick={() => setStage("start")}>
+            <Button onPress={() => setStage("start")}>
               ◀ Go Back to Home
             </Button>
           </CardFooter>

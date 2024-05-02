@@ -25,6 +25,7 @@ function App() {
             handler={handleChange}
             sizeHandler={handleSizeChange}
             color={color}
+            size={size}
           />
         </div>
       </div>
