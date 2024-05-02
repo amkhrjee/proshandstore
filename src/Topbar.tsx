@@ -1,27 +1,18 @@
 import {
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  NavbarMenu,
-  NavbarMenuItem,
-  NavbarMenuToggle,
 } from "@nextui-org/react";
-import { useState } from "react";
+// import { useState } from "react";
 
 export default function Topbar() {
-  // @ts-expect-error shutup
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Features", "About", "Tezpur University"];
+  // const menuItems = ["Features", "About", "Tezpur University"];
   return (
     <Navbar position="static">
-      <NavbarMenuToggle
-        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        className="sm:hidden"
-      />
       <NavbarBrand>
         <p className="font-bold text-inherit">🛒 Prosthetic Hand Store</p>
       </NavbarBrand>
@@ -31,7 +22,7 @@ export default function Topbar() {
         <NavbarItem>GitHub</NavbarItem>
         <NavbarItem>Tezpur University</NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+      {/* <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
@@ -50,7 +41,7 @@ export default function Topbar() {
             </Link>
           </NavbarMenuItem>
         ))}
-      </NavbarMenu>
+      </NavbarMenu> */}
     </Navbar>
   );
 }
