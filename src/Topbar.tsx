@@ -125,21 +125,8 @@ export default function Topbar() {
                 <Spacer y={2} />
                 <p>
                   Special Thanks to our friends at Mechanical Department,{" "}
-                  <Link
-                    href=""
-                    css={{
-                      d: "inline-flex",
-                    }}
-                  >
-                    Aman Uddin
-                  </Link>{" "}
-                  &
-                  <Link
-                    href="https://www.instagram.com/sivam.karmakar/"
-                    css={{
-                      d: "inline-flex",
-                    }}
-                  >
+                  <Link href="#">Aman Uddin</Link> &{" "}
+                  <Link href="https://www.instagram.com/sivam.karmakar/">
                     Sivam Karmakar
                   </Link>
                   , for help with the SolidWorks
