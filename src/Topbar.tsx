@@ -1,5 +1,11 @@
 import {
+  Button,
   Link,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -7,55 +13,148 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
+  Spacer,
+  useDisclosure,
 } from "@nextui-org/react";
 import { useState } from "react";
+import Member from "./Member";
 
 export default function Topbar() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Features", "About", "GitHub", "Tezpur University"];
+  const menuItems = ["Members", "GitHub", "Tezpur University"];
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} isMenuOpen={isMenuOpen} isBlurred>
-      <NavbarContent>
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
-        <NavbarBrand>
-          <p className="font-bold text-inherit">🛒 Prosthetic Hand Store</p>
-        </NavbarBrand>
-      </NavbarContent>
+    <>
+      <Navbar
+        onMenuOpenChange={setIsMenuOpen}
+        isMenuOpen={isMenuOpen}
+        isBlurred
+      >
+        <NavbarContent>
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="sm:hidden"
+          />
+          <NavbarBrand>
+            <p className="font-bold text-inherit">🛒 Prosthetic Hand Store</p>
+          </NavbarBrand>
+        </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="end">
-        <NavbarMenuToggle
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
-        />
-        <NavbarItem>Features</NavbarItem>
-        <NavbarItem>About</NavbarItem>
-        <NavbarItem>GitHub</NavbarItem>
-        <NavbarItem>Tezpur University</NavbarItem>
-      </NavbarContent>
-      <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+        <NavbarContent className="hidden sm:flex gap-4" justify="end">
+          <NavbarMenuToggle
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            className="sm:hidden"
+          />
+          <NavbarItem className="cursor-pointer" onClick={onOpen}>
+            Members
+          </NavbarItem>
+          <NavbarItem>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-              }
-              className="w-full"
-              href="#"
-              size="lg"
+              href="https://github.com/amkhrjee/proshandstore"
+              isExternal
+              showAnchorIcon
             >
-              {item}
+              GitHub
+            </Link>
+          </NavbarItem>
+          <NavbarItem>
+            <Link href="https://www.tezu.ernet.in/" isExternal showAnchorIcon>
+              Tezpur University
+            </Link>
+          </NavbarItem>
+        </NavbarContent>
+        <NavbarMenu>
+          <NavbarMenuItem onClick={onOpen}>Members</NavbarMenuItem>
+          <NavbarMenuItem>
+            {" "}
+            <Link
+              href="https://github.com/amkhrjee/proshandstore"
+              isExternal
+              showAnchorIcon
+            >
+              GitHub
             </Link>
           </NavbarMenuItem>
-        ))}
-      </NavbarMenu>
-    </Navbar>
+          <NavbarMenuItem>
+            <Link href="https://www.tezu.ernet.in/" isExternal showAnchorIcon>
+              Tezpur University
+            </Link>
+          </NavbarMenuItem>
+        </NavbarMenu>
+      </Navbar>
+      <Modal size="2xl" isOpen={isOpen} onOpenChange={onOpenChange}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Project Members & Participants
+              </ModalHeader>
+              <ModalBody className="grid grid-cols-1 justify-between text-center">
+                <Member
+                  imgSrc="https://i.ibb.co/94YXBMG/index1.jpg"
+                  color="primary"
+                  name="Dr. Nayan Moni Kalita"
+                  profileSrc="http://agnigarh.tezu.ernet.in/~nkakoty"
+                  role="Project Guide"
+                />
+                <Spacer y={2} />
+                <div className="grid grid-cols-3">
+                  <Member
+                    imgSrc="https://i.ibb.co/KN48pXh/1713849714221.jpg"
+                    color="secondary"
+                    name="Kumar Yogesh"
+                    profileSrc="https://www.linkedin.com/in/kumar-yogesh-2389872ba/"
+                    role="Electronics & Software"
+                  />
+                  <Member
+                    imgSrc="https://i.ibb.co/0YDSQw5/potrait.jpg"
+                    color="secondary"
+                    name="Aniruddha Mukherjee"
+                    profileSrc="https://www.linkedin.com/in/amkhrjee/"
+                    role="Software & Web"
+                  />
+                  <Member
+                    imgSrc="https://media.licdn.com/dms/image/C4E03AQE6qYHbr36jYw/profile-displayphoto-shrink_400_400/0/1657976189663?e=1720051200&v=beta&t=rlrPa4crHOzxZHeYW0qCCT8M2d77chYIuOaqpjZo_c0"
+                    color="secondary"
+                    name="Ritish Kumar Das"
+                    profileSrc="https://www.linkedin.com/in/ritish-kumar-das-17a629245/"
+                    role="Electronics & ML"
+                  />
+                </div>
+                <Spacer y={2} />
+                <p>
+                  Special Thanks to our friends at Mechanical Department,{" "}
+                  <Link
+                    href="#"
+                    css={{
+                      d: "inline-flex",
+                    }}
+                  >
+                    Aman Uddin
+                  </Link>{" "}
+                  &
+                  <Link
+                    href="#"
+                    css={{
+                      d: "inline-flex",
+                    }}
+                  >
+                    Shivam Karmakar
+                  </Link>
+                  , for help with the SolidWorks
+                </p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
   );
 }

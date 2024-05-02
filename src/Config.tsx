@@ -93,7 +93,7 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color, size }) => {
               minValue={30}
               defaultValue={0.6}
               className="max-w p-2 md:p-0"
-              onChangeEnd={sizeHandler}
+              onChange={sizeHandler}
             />
             <Spacer y={16} />
             <RadioGroup
