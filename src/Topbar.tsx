@@ -24,7 +24,6 @@ export default function Topbar() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = ["Members", "GitHub", "Tezpur University"];
   return (
     <>
       <Navbar
@@ -127,7 +126,7 @@ export default function Topbar() {
                 <p>
                   Special Thanks to our friends at Mechanical Department,{" "}
                   <Link
-                    href="#"
+                    href=""
                     css={{
                       d: "inline-flex",
                     }}
@@ -136,12 +135,12 @@ export default function Topbar() {
                   </Link>{" "}
                   &
                   <Link
-                    href="#"
+                    href="https://www.instagram.com/sivam.karmakar/"
                     css={{
                       d: "inline-flex",
                     }}
                   >
-                    Shivam Karmakar
+                    Sivam Karmakar
                   </Link>
                   , for help with the SolidWorks
                 </p>
