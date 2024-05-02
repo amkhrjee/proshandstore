@@ -11,6 +11,7 @@ import {
 import { useState } from "react";
 
 export default function Topbar() {
+  // @ts-expect-error shutup
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
