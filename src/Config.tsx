@@ -78,11 +78,11 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color, size }) => {
   switch (stage) {
     case "start":
       return (
-        <Card className="p-4 mr-4 h-4/5">
-          <CardHeader className="text-2xl font-bold">
+        <Card className="absolute h-1/2 bottom-0 w-full md:w-1/2 md:right-0 md:bottom-16 md:p-4 md:m-4 md:h-4/5">
+          <CardHeader className="md:text-2xl font-bold text-lg">
             Customize your Prosthetic Hand
           </CardHeader>
-          <CardBody className="p-16 mt-16">
+          <CardBody className="md:p-16 md:mt-16">
             <Slider
               size="lg"
               step={5}
@@ -92,7 +92,7 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color, size }) => {
               maxValue={45}
               minValue={30}
               defaultValue={0.6}
-              className="max-w"
+              className="max-w p-2 md:p-0"
               onChangeEnd={sizeHandler}
             />
             <Spacer y={16} />
@@ -117,7 +117,7 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color, size }) => {
       );
     case "mid":
       return (
-        <Card className="p-4 mr-4 h-4/5">
+        <Card className="absolute h-2/3 bottom-0 w-full md:w-1/2 md:right-0 md:bottom-16 md:p-4 md:m-4 md:h-4/5">
           <CardHeader className="text-2xl font-bold">
             <Button
               isIconOnly
@@ -173,7 +173,7 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color, size }) => {
               type="text"
               label="Address"
               description="Your order will be delivered here."
-              className="w-5/6"
+              className="w-full md:w-4/5"
               onChange={(e) => setAddress(e.target.value)}
               defaultValue={address}
             />
@@ -229,9 +229,9 @@ const Config: FC<ConfigProps> = ({ handler, sizeHandler, color, size }) => {
       );
     case "final":
       return (
-        <Card className="p-4 mr-4 h-4/5">
+        <Card className="absolute h-1/2 bottom-0 w-full md:w-1/2 md:right-0 md:bottom-16 md:p-4 md:m-4 md:h-4/5">
           <ConfettiExplosion />
-          <CardBody className="text-center flex flex-col  justify-center text-4xl font-bold">
+          <CardBody className="text-center flex flex-col justify-center text-4xl font-bold">
             Thank you for ordering with us!
             <Spacer y={2} />
             <h1 className="text-sm">

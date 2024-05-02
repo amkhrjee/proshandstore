@@ -81,7 +81,10 @@ const Result: FC<ModelProps> = ({ color, size }) => {
 
 const Model: FC<ModelProps> = ({ color, size }) => {
   return (
-    <div id="canvas-container">
+    <div
+      className="absolute h-1/2 top-0 md:bottom-0 w-full md:w-1/2 md:h-full"
+      id="canvas-container"
+    >
       <Canvas camera={{ position: [0, 200, 200] }}>
         {/* <Canvas> */}
         {/* <ambientLight intensity={5} /> */}

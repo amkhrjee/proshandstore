@@ -4,7 +4,7 @@ import Model from "./Model";
 import Topbar from "./Topbar";
 
 function App() {
-  const [color, setColor] = useState("white");
+  const [color, setColor] = useState("gray");
   const [size, setSize] = useState(30);
 
   const handleChange = (value: string) => {
@@ -17,9 +17,9 @@ function App() {
 
   return (
     <>
-      <div className="h-screen">
+      <div className="h-dvh">
         <Topbar />
-        <div className="grid grid-cols-2 h-full">
+        <div className="mt-16">
           <Model color={color} size={size} />
           <Config
             handler={handleChange}
