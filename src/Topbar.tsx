@@ -4,7 +4,6 @@ import {
   NavbarContent,
   NavbarItem,
 } from "@nextui-org/react";
-// import { useState } from "react";
 
 export default function Topbar() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
