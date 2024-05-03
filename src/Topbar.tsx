@@ -94,7 +94,7 @@ export default function Topbar() {
                 <Member
                   imgSrc="https://i.ibb.co/94YXBMG/index1.jpg"
                   color="primary"
-                  name="Dr. Nayan Moni Kalita"
+                  name="Dr. Nayan Moni Kakoty"
                   profileSrc="http://agnigarh.tezu.ernet.in/~nkakoty"
                   role="Project Guide"
                 />
@@ -127,8 +127,12 @@ export default function Topbar() {
                 <Spacer y={1} />
                 <p>
                   Special Thanks to our friends at Mechanical Engineering
-                  Department, <Link href="#">Aman Uddin</Link> &{" "}
-                  <Link href="https://www.instagram.com/sivam.karmakar/">
+                  Department,{" "}
+                  <Link target="_blank" href="https://www.linkedin.com/in/aman-uddin-900933307/">
+                    Aman Uddin
+                  </Link>{" "}
+                  &{" "}
+                  <Link target="_blank" href="https://www.instagram.com/sivam.karmakar/">
                     Sivam Karmakar
                   </Link>
                   , for help with SolidWorks
