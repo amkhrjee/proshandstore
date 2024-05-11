@@ -13,7 +13,7 @@ To load these proprietary SolidWorks format files to the web, I had to first con
 
 If you would like to learn more about the project, you should probably look at these [slides](https://docs.google.com/presentation/d/1yzAGtNsKP1dFGIaE75qEuR0bYRvoaOhPUyfg9PLlXvY/edit?usp=sharing) that I made for the project presentation. These contain the Why's and What's of the project.
 
-<div style="text-align:center">
+<div align="center">
 
 ![Image](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXpramNwNzF4dGhzejNmcHdjMnN6dWZoemFvNWh6b3BibTBzODFjcCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Wc2hKcVoNU7woDhpKA/giphy.gif)
 
