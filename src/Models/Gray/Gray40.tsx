@@ -5,7 +5,6 @@ import { GLTF } from "three-stdlib";
 type GLTFResult = GLTF & {
   nodes: {
     nodes0: THREE.Mesh;
-    nodes16: THREE.Mesh;
   };
   materials: {
     material: THREE.MeshStandardMaterial;
@@ -19,10 +18,6 @@ export default function Gray40(props: JSX.IntrinsicElements["group"]) {
   return (
     <group {...props} dispose={null}>
       <mesh geometry={nodes.nodes0.geometry} material={materials.material}>
-        <meshPhongMaterial color={"gray"} />
-      </mesh>
-
-      <mesh geometry={nodes.nodes16.geometry} material={materials.material}>
         <meshPhongMaterial color={"gray"} />
       </mesh>
     </group>
